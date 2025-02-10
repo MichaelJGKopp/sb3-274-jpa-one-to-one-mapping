@@ -9,10 +9,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.yaml.snakeyaml.error.Mark;
 
 @Entity
 @Table(name="instructor")
@@ -24,6 +27,7 @@ public class Instructor {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
     @Column(name="id")
     private int id;
 
@@ -39,4 +43,10 @@ public class Instructor {
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="instructor_detail_id")
     private InstructorDetail instructorDetail;
+
+//  About builder with hibernate entities:
+//  ✔ Always add @NoArgsConstructor
+//  ✔ Mark id with @Setter(AccessLevel.NONE) to avoid ID assignment issues
+//  ✔ Handle relationships carefully (exclude them from @Builder)
+//  ✔ Use DTOs instead of @Builder directly on entities for flexibility
 }
