@@ -15,7 +15,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.yaml.snakeyaml.error.Mark;
+
+// experimenting with lombok here
 
 @Entity
 @Table(name="instructor")
@@ -44,11 +45,10 @@ public class Instructor {
     @JoinColumn(name="instructor_detail_id")
     private InstructorDetail instructorDetail;
 
-    public Instructor(String firstName, String lastName, String email, InstructorDetail instructorDetail) {
+    public Instructor(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.instructorDetail = instructorDetail;
     }
 
     //  About builder with hibernate entities:
