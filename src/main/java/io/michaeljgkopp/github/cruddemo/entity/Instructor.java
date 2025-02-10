@@ -44,7 +44,14 @@ public class Instructor {
     @JoinColumn(name="instructor_detail_id")
     private InstructorDetail instructorDetail;
 
-//  About builder with hibernate entities:
+    public Instructor(String firstName, String lastName, String email, InstructorDetail instructorDetail) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.instructorDetail = instructorDetail;
+    }
+
+    //  About builder with hibernate entities:
 //  ✔ Always add @NoArgsConstructor
 //  ✔ Mark id with @Setter(AccessLevel.NONE) to avoid ID assignment issues
 //  ✔ Handle relationships carefully (exclude them from @Builder)
