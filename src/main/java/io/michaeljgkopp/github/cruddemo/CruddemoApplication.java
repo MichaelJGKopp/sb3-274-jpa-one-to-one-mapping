@@ -41,13 +41,12 @@ public class CruddemoApplication {
             id = 5;
             testBirectionalMapping(instructorRepository, instructorDetailRepository, id);
 
-
-            // list all instructors
-            listInstructors(instructorRepository);
-
             // delete instructorDetail without deleting instructor
             id = 1;
             deleteInstructorDetailWithoutDeletingInstructor(instructorRepository, instructorDetailRepository, id);
+
+            // list all instructors
+            listInstructors(instructorRepository);
         };
     }
 
