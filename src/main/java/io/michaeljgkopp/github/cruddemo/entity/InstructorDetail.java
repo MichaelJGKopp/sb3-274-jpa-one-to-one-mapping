@@ -37,7 +37,7 @@ public class InstructorDetail {
     private String hobby;
 
     // for bidirectional mapping
-    @OneToOne(mappedBy="instructorDetail", cascade=CascadeType.ALL)
+    @OneToOne(mappedBy="instructorDetail", cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @ToString.Exclude   // to avoid infinite recursion
     private Instructor instructor;
 
