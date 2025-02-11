@@ -44,7 +44,29 @@ public class CruddemoApplication {
 
             // list all instructors
             listInstructors(instructorRepository);
+
+            // delete instructorDetail without deleting instructor
+            id = 1;
+            deleteInstructorDetailWithoutDeletingInstructor(instructorRepository, instructorDetailRepository, id);
         };
+    }
+
+    private static void deleteInstructorDetailWithoutDeletingInstructor(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository, int id) {
+        Instructor instructor;
+        // retrieve instructorDetail by id
+        InstructorDetail instructorDetail = instructorDetailRepository.findById(id).orElse(null);
+        if (instructorDetail != null) {
+            // remove the associated object reference
+            instructorDetail.getInstructor().setInstructorDetail(null);
+
+            // delete the instructorDetail
+            instructorDetailRepository.delete(instructorDetail);
+            System.out.printf("Deleted instructorDetail with id %d%n%n", id);
+
+            // show that the instructor is still there
+            instructor = instructorRepository.findById(instructorDetail.getInstructor().getId()).orElse(null);
+            System.out.println("Instructor after deleting instructorDetail: " + instructor);
+        }
     }
 
     private static void resetDatabase(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository) {
