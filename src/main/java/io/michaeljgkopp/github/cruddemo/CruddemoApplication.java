@@ -50,7 +50,9 @@ public class CruddemoApplication {
         };
     }
 
-    private static void deleteInstructorDetailWithoutDeletingInstructor(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository, int id) {
+    private static void deleteInstructorDetailWithoutDeletingInstructor(
+            InstructorRepository instructorRepository,
+            InstructorDetailRepository instructorDetailRepository, int id) {
         Instructor instructor;
         // retrieve instructorDetail by id
         InstructorDetail instructorDetail = instructorDetailRepository.findById(id).orElse(null);
@@ -110,7 +112,9 @@ public class CruddemoApplication {
         }
     }
 
-    private static void testBirectionalMapping(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository, int id) {
+    private static void testBirectionalMapping(
+            InstructorRepository instructorRepository,
+            InstructorDetailRepository instructorDetailRepository, int id) {
 
         // find instructorDetail by id
         Instructor instructor;
